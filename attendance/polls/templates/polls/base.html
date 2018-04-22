@@ -1,0 +1,39 @@
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title align="center">{% block title %}Attendance System{% endblock %}</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css"/>
+</head>
+<body>
+		<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			 <!-- Header -->
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+	            </button>
+	            <a class="navbar-brand" href="{% url 'polls:polls' %}">Attendance System</a>
+	        </div>
+			
+			
+	                
+	            
+	            <ul class="nav navbar-nav navbar-right">
+	            	<li><a href="{% url 'polls:create_student' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Students</a></li>
+                         <li><a href="{% url 'polls:create_staff' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Staffs</a></li>
+
+                         <li><a href="{% url 'polls:create_subject' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Subjects</a></li>
+
+
+	            	
+	            </ul>
+			 </div>
+		</div>
+	</nav>
+	
+{% block body %}
+{% endblock %}
+</body>
+</html>

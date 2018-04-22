@@ -1,0 +1,73 @@
+{% extends 'polls/base.html' %}
+{% block title %}Attendance System{% endblock %}
+{% block body %}
+
+
+<div class="container-fluid">
+	<div class="row">
+		<!--  left: tutorial info -->
+		<div class="col-sm-4 col-md-3">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<a href="{% url 'polls:detail' stud.id %}">
+				</div>
+			</div>
+		</div>
+		<!--  right: Add book info -->
+		<div class="col-sm-8 col-md-9">
+			  <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <!--<li role="presentation" class="active"><a href="#">View All</a></li>   -->
+                <li role="presentation"><a href="{% url 'polls:create_student' stud.id %}">Add Students</a></li>
+            </ul>
+            
+            <div class="panel panel-default">
+	            <div class="panel-body">
+	            	<h2>Students</h2>
+	            	<table class="table">
+	            	<thead>
+	            	<tr>
+	            		<th>id</th>
+	            		<th>roll_no</th>
+	            		<th>name</th>
+	            		<th>dob</th>
+                                <th>department</th>
+                                <th>class</th>
+                                <th>batch</th>
+                                <th>email</th>
+                                <th>mobie</th>
+	            		
+	            	</tr>
+	            	</thead>
+	            	<tbody>
+	            	{% for student in students %}
+	            	<tr>
+	            		<td>{{ student.id }}</td>
+	            		<td>{{ student.roll_no }}</td>
+	            		<td>
+	            			<a href={{ book.pdf_file.url }}>
+	            				<button type="button" class="btn btn-success btn-xs">
+	            					<div class="col-sm-12 col-md-3"> <span class="glyphicon glyphicon-open"></span></div>
+	            				</button>
+	            			</a>
+	            		</td>
+	            		<td>{{ book.price }}</td>
+	            		<td>
+		            		<form action="{% url 'books:delete_book' soft_tuts.id book.id %}" method="post" style="display: inline;">
+		            			{% csrf_token %}
+			            		<input type="hidden" name="book_id" value="{{ soft_tuts.id }}"/>
+			            		<button type="submit">
+			            			<span class="glyphicon glyphicon-remove"></span>
+			            		</button>
+		            		</form>
+		            	</td>
+		            <tr>
+	            	{% endfor %}
+	            	</tbody>
+	            	</table>
+	            </div>
+	          </div>
+            </div>
+		</div>
+</div>
+
+{% endblock %}
